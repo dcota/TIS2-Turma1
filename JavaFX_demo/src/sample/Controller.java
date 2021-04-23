@@ -17,12 +17,38 @@ public class Controller {
 
     @FXML Label lblLinguagemPreferida;
 
-    String textoEsquerda="";
+    @FXML RadioButton rb1;
+
+    @FXML RadioButton rb2;
+
+    @FXML RadioButton rb3;
+
+    @FXML RadioButton rb4;
+
+    @FXML Label lbLinguagemEscolhida;
+
+    @FXML Button btnLinguagemRB;
+
+    @FXML CheckBox chkbSim;
+
+    @FXML CheckBox chkbNao;
+
+    @FXML Label aviso;
+
+    private ToggleGroup tg;
+
+    private String textoEsquerda="";
 
     public void mudaTexto(ActionEvent event){
-        textoEsquerda += this.tfEsquerda.getText() + "\n";
-        this.taDireita.setText(textoEsquerda);
-        this.tfEsquerda.setText("");
+        if(this.chkbSim.isSelected() && !this.chkbNao.isSelected() && !this.tfEsquerda.getText().equals("")){
+            textoEsquerda += this.tfEsquerda.getText() + "\n";
+            this.taDireita.setText(textoEsquerda);
+            this.tfEsquerda.setText("");
+            this.aviso.setText("Linha adicionada!");
+        } else {
+            this.aviso.setText("Linha rejeitada...");
+        }
+
     }
 
     public void selecionaLinguagem (ActionEvent event){
@@ -30,12 +56,39 @@ public class Controller {
         this.lblLinguagemPreferida.setText(linguagem);
     }
 
+    public void selecionaLinguagemRB (ActionEvent event) {
+        String texto;
+        if (this.rb1.isSelected()) {
+            texto = this.rb1.getText();
+            this.lbLinguagemEscolhida.setText(texto);
+        } else if (this.rb2.isSelected()) {
+            texto = this.rb2.getText();
+            this.lbLinguagemEscolhida.setText(texto);
+        } else if (this.rb3.isSelected()) {
+            texto = this.rb3.getText();
+            this.lbLinguagemEscolhida.setText(texto);
+        } else if (this.rb4.isSelected()) {
+            texto = this.rb4.getText();
+            this.lbLinguagemEscolhida.setText(texto);
+        }
+    }
     public void initialize(){
+
+        //adiciona opções à combobox
         this.cbLinguagens.getItems().add("Java");
         this.cbLinguagens.getItems().add("C");
         this.cbLinguagens.getItems().add("C++");
         this.cbLinguagens.getItems().add("Python");
         this.cbLinguagens.getItems().add("C#");
+
+        //criar um grupo com os radiobuttons
+        tg = new ToggleGroup();
+        this.rb1.setToggleGroup(tg);
+        this.rb1.setSelected(true);
+        this.rb2.setToggleGroup(tg);
+        this.rb3.setToggleGroup(tg);
+        this.rb4.setToggleGroup(tg);
+
     }
 
 }
