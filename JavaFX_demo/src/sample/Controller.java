@@ -44,9 +44,18 @@ public class Controller {
             textoEsquerda += this.tfEsquerda.getText() + "\n";
             this.taDireita.setText(textoEsquerda);
             this.tfEsquerda.setText("");
-            this.aviso.setText("Linha adicionada!");
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setHeaderText(null);
+            alerta.setTitle("SUCESSO");
+            alerta.setContentText("Linha adicionada!");
+            alerta.showAndWait();
+
         } else {
-            this.aviso.setText("Linha rejeitada...");
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setHeaderText(null);
+            alerta.setTitle("AVISO");
+            alerta.setContentText("Linha rejeitada...");
+            alerta.showAndWait();
         }
 
     }
