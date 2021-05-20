@@ -43,25 +43,47 @@ public class Controller {
     }
 
     @FXML
-    public void adicionar(ActionEvent event){
-        if(this.tfPrimNome.equals(null) ||
-                this.tfUltNome.equals(null) ||
-                this.cbGenero.equals(null)) {
+    public void adicionar(ActionEvent event) {
+
+            //recolher a informação do formulário
             String primNome = this.tfPrimNome.getText();
             String ultNome = this.tfUltNome.getText();
             String genero = this.cbGenero.getValue();
+
+            //instanciar objeto da classe Pessoa
+            Pessoa p = new Pessoa(primNome,ultNome,genero);
+
+            if (this.listaPessoas.contains(p) == false){
+                //adicvionar o novo objeto à observablelist
+                this.listaPessoas.add(p);
+
+                //enviar a observablelista para a tabela
+                this.tblPessoas.setItems(listaPessoas);
+
+                //limpar o focmulário
+                limparForm();
+            }
+            else {
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setHeaderText(null);
+                alerta.setTitle("ERRO");
+                alerta.setContentText("Pessoa existente");
+                alerta.showAndWait();
+            }
+
+
+
+
+
         }
-        else {
-            Alert alerta = new Alert(Alert.AlertType.WARNING);
-            alerta.setHeaderText(null);
-            alerta.setTitle("ERRO");
-            alerta.setContentText("Todos os campos têm de estar preenchidos");
-            alerta.showAndWait();
+
+        public void limparForm(){
+            this.tfPrimNome.setText("");
+            this.tfUltNome.setText("");
+            this.cbGenero.setValue(null);
         }
-
-
-
-    }
 
 
 }
+
+
