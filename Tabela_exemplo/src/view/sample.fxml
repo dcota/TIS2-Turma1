@@ -8,7 +8,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <children>
       <TextField fx:id="tfPrimNome" layoutX="24.0" layoutY="69.0" />
@@ -25,5 +24,7 @@
             <TableColumn fx:id="colGenero" prefWidth="94.0" text="Género" />
         </columns>
       </TableView>
+      <Button fx:id="btnEliminar" layoutX="72.0" layoutY="310.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="25.0" prefWidth="67.0" text="Eliminar" />
+      <Button fx:id="btnAlterar" layoutX="73.0" layoutY="350.0" mnemonicParsing="false" onAction="#alterar" prefHeight="25.0" prefWidth="67.0" text="Alterar" />
    </children>
 </AnchorPane>
