@@ -35,6 +35,8 @@ public class Controller {
     Button btnEliminar;
     @FXML
     Button btnAlterar;
+    @FXML
+    Button btnSair;
 
     private ObservableList<Pessoa> listaPessoas;
 
@@ -141,11 +143,19 @@ public class Controller {
 
                 alertaSUCESSO("Registo alterado com sucesso!");
 
+
             }
         }
         catch (Exception e) {
 
         }
+    }
+
+    public void sair(ActionEvent event){
+        alertaSUCESSO("Até à próxima!");
+        //fechar a vista
+        Stage stage = (Stage) this.btnSair.getScene().getWindow();
+        stage.close();
     }
 
     public void limparForm(){
