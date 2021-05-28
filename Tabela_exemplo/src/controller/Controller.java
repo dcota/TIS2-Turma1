@@ -111,19 +111,36 @@ public class Controller {
             if (p == null) {
                 alertaERRO("Deve selecionar uma linha para alterar!");
             } else {
-                //criar um loader para carregar a segunda vista
+                //Passo1 - criar um loader para carregar a segunda vista
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/vista_alterar.fxml"));
                 Parent root = loader.load();
 
+                //Passo2
                 //poder aceder aos métodos do segundo controller
                 Controller2 controller2 = loader.getController();
+                //chamar o método getDados() e passar o objeto
                 controller2.getDados(p);
 
+                //Passo3 - mostrar a segunda vista
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.initModality(Modality.WINDOW_MODAL);
                 stage.setScene(scene);
                 stage.showAndWait();
+
+                //vai buscar o objeto pAlterada ao controller2
+                Pessoa pAlterada = controller2.getpAlterada();
+
+                //alterar os valores do objeto inicial para os valores do objeto pAlterada
+                p.setPrimNome(pAlterada.getPrimNome());
+                p.setUltNome(pAlterada.getUltNome());
+                p.setGenero(pAlterada.getGenero());
+
+                //atualiza a tabela
+                this.tblPessoas.refresh();
+
+                alertaSUCESSO("Registo alterado com sucesso!");
+
             }
         }
         catch (Exception e) {
