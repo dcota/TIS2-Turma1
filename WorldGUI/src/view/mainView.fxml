@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <TableView fx:id="tblCidades" layoutX="65.0" layoutY="70.0" prefHeight="200.0" prefWidth="378.0">
+        <columns>
+          <TableColumn fx:id="colCidade" prefWidth="193.0" text="CIDADE" />
+          <TableColumn fx:id="colPais" prefWidth="184.0" text="PAÍS" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
