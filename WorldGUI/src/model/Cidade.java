@@ -3,7 +3,7 @@ package model;
 import java.util.Objects;
 
 public class Cidade {
-
+    //atributos
     private String cidade;
     private String pais;
 
