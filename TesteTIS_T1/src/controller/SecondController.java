@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Resposta;
 
 public class SecondController {
 
@@ -17,9 +18,9 @@ public class SecondController {
     private Button btnFechar;
 
     //método que recebe a resposta da vista principal e mostra na caixa de texto
-    void getResposta(String resposta){
+    void getResposta(Resposta resposta){
         this.tfValida.setText("");
-        this.tfValida.setText(resposta);
+        this.tfValida.setText(resposta.getResposta());
     }
 
     //método para fechar a vista
