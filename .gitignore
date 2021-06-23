@@ -1,4 +1,4 @@
 # Ignore config files
 *.properties
-.idea
-out/
+idea
+out
