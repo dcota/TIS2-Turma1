@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Resposta;
 
 import java.io.IOException;
 
@@ -36,7 +37,7 @@ public class MainController {
                 try {
                     //tenta converter o valor introduzido para inteiro
                     //se contém caracteres inválidos lança exceção apanhada na linha 77
-                    long num = Long.parseLong(this.tfNum.getText());
+                    Long num = Long.parseLong(this.tfNum.getText());
                     //se o valor da caixa tiver mais do que 6 caracteres informa
                     if (this.tfNum.getText().length() > 6) {
                         alertaAtencao("O número tem mais do que 6 digitos");
@@ -44,21 +45,25 @@ public class MainController {
                     //se não verifica se é primo e preenche a variável resposta
                     else {
                         boolean primo = true;
+                        Resposta res = new Resposta();
                         for (int i = 2; i < num; i++) {
                             if (num % i == 0) {
                                 primo = false;
                                 break;
                             }
                         }
-                        if (primo)
-                            resposta = "O número " + num + " é primo.";
-                        else
-                            resposta = "O número " + num + " não é primo.";
+                        if (primo){
+                            res.setResposta("O número " + num + " é primo.");
+                        }
+                        else{
+                            res.setResposta("O número " + num + " não é primo.");
+                        }
+
                         //prepara e envia a resposta para a segunda vista
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/second.fxml"));
                         Parent root = loader.load();
                         SecondController controller = loader.getController();
-                        controller.getResposta(resposta);
+                        controller.getResposta(res);
                         //lança a segunda vista depois de passar a resposta
                         Scene scene = new Scene(root);
                         Stage stage = new Stage();
