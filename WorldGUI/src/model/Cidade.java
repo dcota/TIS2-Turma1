@@ -6,10 +6,20 @@ public class Cidade {
     //atributos
     private String cidade;
     private String pais;
+    private int ID;
 
-    public Cidade(String cidade, String pais) {
+    public Cidade(int ID, String cidade, String pais) {
+        this.ID = ID;
         this.cidade = cidade;
         this.pais = pais;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getCidade() {
@@ -33,11 +43,11 @@ public class Cidade {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cidade cidade1 = (Cidade) o;
-        return Objects.equals(cidade, cidade1.cidade) && Objects.equals(pais, cidade1.pais);
+        return ID == cidade1.ID && Objects.equals(cidade, cidade1.cidade) && Objects.equals(pais, cidade1.pais);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cidade, pais);
+        return Objects.hash(cidade, pais, ID);
     }
 }

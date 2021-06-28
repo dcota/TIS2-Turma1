@@ -27,15 +27,30 @@ public class MySQLConnection {
 
         } catch (SQLException e) {
             System.out.println("Erro de ligação à base de dados...");
+            e.printStackTrace();
         }
     }
 
     public ResultSet getCidades(){
         ResultSet result = null;
-        String sql="SELECT city.Name, country.Name\n" +
+        String sql="SELECT city.ID, city.Name, country.Name\n" +
                 "FROM city, country\n" +
                 "WHERE city.CountryCode = country.Code\n" +
                 "ORDER BY country.Name ASC";
+        try{
+            Statement stm = connection.createStatement();
+            result = stm.executeQuery(sql);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return result;
+    }
+    public ResultSet getDetalhe(int ID){
+        ResultSet result = null;
+        String sql="SELECT city.Name, country.Name, city.District, city.Population\n" +
+                "FROM city, country\n" +
+                "WHERE city.CountryCode = country.Code\n" +
+                "AND city.ID=" + ID;
         try{
             Statement stm = connection.createStatement();
             result = stm.executeQuery(sql);
