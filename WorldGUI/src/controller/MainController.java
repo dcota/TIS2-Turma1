@@ -7,19 +7,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Cidade;
 import model.MySQLConnection;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Locale;
 
 public class MainController {
 
@@ -35,7 +34,11 @@ public class MainController {
     @FXML
     private Button btnDetalhe;
 
+    @FXML
+    private TextField tfPesquisa;
+
     private ObservableList<Cidade> listaCidades;
+    private ObservableList<Cidade> listaAux;
 
     private Cidade linhaCidade;
 
@@ -44,6 +47,7 @@ public class MainController {
     public void initialize(){
         //preparar a tabela para receber os objetos da classe Pessoa
         listaCidades = FXCollections.observableArrayList();
+        listaAux = FXCollections.observableArrayList();
         this.tblCidades.setItems(listaCidades);
         this.colCidade.setCellValueFactory(new PropertyValueFactory<Cidade,String>("cidade"));
         this.colPais.setCellValueFactory(new PropertyValueFactory<Cidade,String>("pais"));
@@ -52,6 +56,21 @@ public class MainController {
 
         fillTable();
 
+    }
+
+    public void pesquisar(){
+        String texto = this.tfPesquisa.getText();
+        if(texto.isEmpty()){
+            this.tblCidades.setItems(listaCidades);
+        } else {
+            this.listaAux.clear();
+            for(Cidade c : listaCidades){
+                if(c.getPais().toLowerCase().contains(texto.toLowerCase())){
+                    this.listaAux.add(c);
+                }
+            }
+            this.tblCidades.setItems(listaAux);
+        }
     }
 
     public void fillTable() {
@@ -97,6 +116,7 @@ public class MainController {
                 stage.initModality(Modality.WINDOW_MODAL);
                 stage.setScene(scene);
                 stage.showAndWait();
+
 
             } catch (IOException e) {
                 e.printStackTrace();
