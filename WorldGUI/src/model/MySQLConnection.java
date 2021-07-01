@@ -75,4 +75,26 @@ public class MySQLConnection {
         return result;
     }
 
+    public boolean inserirCidade(Cidade c){
+        System.out.print(c.getCodPais());
+        String sql =
+                "INSERT INTO city (Name, CountryCode, District, Population) VALUES (?,?,?,?)";
+        try{
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1,c.getCidade());
+            statement.setString(2,c.getCodPais());
+            statement.setString(3,c.getDistrito());
+            statement.setInt(4,c.getPop());
+            int linhas = statement.executeUpdate();
+            System.out.println(linhas);
+            if(linhas == 1){
+                return true;
+            }
+            else return false;
+        } catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

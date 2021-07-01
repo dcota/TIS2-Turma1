@@ -7,11 +7,45 @@ public class Cidade {
     private String cidade;
     private String pais;
     private int ID;
+    private String distrito;
+    private int pop;
+    private String codPais;
 
     public Cidade(int ID, String cidade, String pais) {
         this.ID = ID;
         this.cidade = cidade;
         this.pais = pais;
+    }
+
+    public Cidade(String cidade, String codPais, String distrito, int pop) {
+        this.cidade = cidade;
+        this.codPais = codPais;
+        this.distrito = distrito;
+        this.pop = pop;
+    }
+
+    public String getCodPais() {
+        return codPais;
+    }
+
+    public void setCodPais(String codPais) {
+        this.codPais = codPais;
+    }
+
+    public String getDistrito() {
+        return distrito;
+    }
+
+    public void setDistrito(String distrito) {
+        this.distrito = distrito;
+    }
+
+    public int getPop() {
+        return pop;
+    }
+
+    public void setPop(int pop) {
+        this.pop = pop;
     }
 
     public int getID() {

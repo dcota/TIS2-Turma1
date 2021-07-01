@@ -142,6 +142,7 @@ public class MainController {
             stage.initModality(Modality.WINDOW_MODAL);
             stage.setScene(scene);
             stage.showAndWait();
+            fillTable();
         } catch (IOException e) {
             e.printStackTrace();
         }
