@@ -60,4 +60,19 @@ public class MySQLConnection {
         return result;
     }
 
+    //método para consultar os códigos e nomes de países
+    public ResultSet getPaises(){
+        ResultSet result = null;
+        String sql="SELECT country.Code, country.Name\n" +
+                "FROM country\n" +
+                "ORDER BY country.Name ASC";
+        try{
+            Statement stm = connection.createStatement();
+            result = stm.executeQuery(sql);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return result;
+    }
+
 }

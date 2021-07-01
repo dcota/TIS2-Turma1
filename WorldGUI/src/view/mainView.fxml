@@ -15,8 +15,10 @@
           <TableColumn fx:id="colPais" prefWidth="184.0" text="PAÍS" />
         </columns>
       </TableView>
-      <Button fx:id="btnDetalhe" layoutX="220.0" layoutY="451.0" mnemonicParsing="false" onAction="#detalhe" text="Ver Detalhe" />
+      <Button fx:id="btnDetalhe" layoutX="220.0" layoutY="451.0" mnemonicParsing="false" onAction="#detalhe" prefHeight="3.0" prefWidth="88.0" text="Ver Detalhe" />
       <TextField fx:id="tfPesquisa" layoutX="186.0" layoutY="42.0" onKeyReleased="#pesquisar" prefHeight="25.0" prefWidth="257.0" />
       <Label layoutX="73.0" layoutY="46.0" text="Pesquisa por país:" />
+      <Button fx:id="btnInserir" layoutX="73.0" layoutY="451.0" mnemonicParsing="false" onAction="#inserir" prefHeight="3.0" prefWidth="88.0" text="Inserir cidade" />
+      <Button fx:id="btnSair" layoutX="355.0" layoutY="451.0" mnemonicParsing="false" onAction="#sair" prefHeight="3.0" prefWidth="88.0" text="Sair" />
    </children>
 </AnchorPane>

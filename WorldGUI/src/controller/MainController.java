@@ -13,11 +13,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Cidade;
 import model.MySQLConnection;
+import model.Pais;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainController {
@@ -36,6 +38,12 @@ public class MainController {
 
     @FXML
     private TextField tfPesquisa;
+
+    @FXML
+    private Button btnInserir;
+
+    @FXML
+    private Button btnSair;
 
     private ObservableList<Cidade> listaCidades;
     private ObservableList<Cidade> listaAux;
@@ -122,6 +130,28 @@ public class MainController {
                 e.printStackTrace();
             }
         }
+    }
+
+    @FXML
+    void inserir(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/newCityView.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @FXML
+    void sair(ActionEvent event) {
+
     }
 
     @FXML

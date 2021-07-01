@@ -9,9 +9,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="262.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InsertCityController">
    <children>
-      <TextField fx:id="tfCidade" editable="false" layoutX="57.0" layoutY="79.0" />
-      <TextField fx:id="tfDistrito" editable="false" layoutX="57.0" layoutY="213.0" />
-      <TextField fx:id="tfPopulacao" editable="false" layoutX="57.0" layoutY="282.0" onAction="#fechar" />
+      <TextField fx:id="tfCidade" layoutX="57.0" layoutY="79.0" />
+      <TextField fx:id="tfDistrito" layoutX="57.0" layoutY="213.0" />
+      <TextField fx:id="tfPopulacao" layoutX="57.0" layoutY="282.0" onAction="#fechar" />
       <Button fx:id="btnFechar" layoutX="196.0" layoutY="361.0" mnemonicParsing="false" onAction="#fechar" text="Fechar" />
       <Label layoutX="50.0" layoutY="23.0" text="INSERIR CIDADE">
          <font>
