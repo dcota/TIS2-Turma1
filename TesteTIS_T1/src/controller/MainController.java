@@ -33,11 +33,12 @@ public class MainController {
             //começar por verificar se a caixa de texto está vazia
             if (this.tfNum.getText().isEmpty()) {
                 alertaAtencao("Tem de indicar um número!");
-            } else {
+            }
+            else {
                 try {
                     //tenta converter o valor introduzido para inteiro
                     //se contém caracteres inválidos lança exceção apanhada na linha 77
-                    Long num = Long.parseLong(this.tfNum.getText());
+                    int num = Integer.parseInt(this.tfNum.getText());
                     //se o valor da caixa tiver mais do que 6 caracteres informa
                     if (this.tfNum.getText().length() > 6) {
                         alertaAtencao("O número tem mais do que 6 digitos");
@@ -63,6 +64,7 @@ public class MainController {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/second.fxml"));
                         Parent root = loader.load();
                         SecondController controller = loader.getController();
+                        //passar a resposta
                         controller.getResposta(res);
                         //lança a segunda vista depois de passar a resposta
                         Scene scene = new Scene(root);
@@ -70,7 +72,7 @@ public class MainController {
                         stage.initModality(Modality.WINDOW_MODAL);
                         stage.setScene(scene);
                         stage.showAndWait();
-                        //depois de voltar da segunda vista limpa o formulário
+                        //depois de voltar da segunda vista limpa a caixa de entrada de números
                         this.tfNum.setText("");
                     }
                 } catch (NumberFormatException e) {
@@ -84,11 +86,11 @@ public class MainController {
 
     //método para lançar alertas com mensagem variável
     @FXML
-    void alertaAtencao(String txt){
+    void alertaAtencao(String texto){
         Alert alerta = new Alert(Alert.AlertType.ERROR);
         alerta.setHeaderText(null);
         alerta.setTitle("ATENÇÃO");
-        alerta.setContentText(txt);
+        alerta.setContentText(texto);
         alerta.showAndWait();
         this.tfNum.setText("");
     }
